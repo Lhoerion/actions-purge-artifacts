@@ -1,0 +1,29 @@
+{
+  "name": "actions-purge-artifacts",
+  "version": "0.0.1",
+  "description": "Purge artifacts that were previously uploaded in the workflow",
+  "main": "dist/index.js",
+  "author": "Unnvaldr",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "release": "ncc build src/index.ts && git add -f dist/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lhoerion/actions-purge-artifacts.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Lhoerion/actions-purge-artifacts/issues"
+  },
+  "homepage": "https://github.com/Lhoerion/actions-purge-artifacts#readme",
+  "dependencies": {
+    "@actions/artifact": "^0.6.0",
+    "@actions/core": "^1.2.6"
+  },
+  "devDependencies": {
+    "@types/node": "^12.12.6",
+    "@vercel/ncc": "^0.33.3",
+    "typescript": "^3.8.3"
+  }
+}

@@ -1,0 +1,10 @@
+name: 'Purge artifacts'
+description: 'Purge artifacts that were previously uploaded in the workflow'
+author: 'GitHub'
+inputs: 
+  name:
+    description: 'Artifact name'
+    required: false
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
