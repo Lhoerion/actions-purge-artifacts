@@ -24,7 +24,7 @@ async function run(): Promise<void> {
 
       for (let i = 0; i < artifacts.length; ++i) {
         const artifact = artifacts[i];
-        if (i > inputs.expireAfter || (inputs.expireBy && shouldBePurged(artifact, inputs.artifactNames, inputs.expireBy))) {
+        if (i < inputs.expireAfter || (inputs.expireBy && shouldBePurged(artifact, inputs.artifactNames, inputs.expireBy))) {
           continue;
         }
 

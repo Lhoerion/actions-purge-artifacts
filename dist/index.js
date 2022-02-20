@@ -8495,7 +8495,7 @@ function run() {
                 }
                 for (let i = 0; i < artifacts.length; ++i) {
                     const artifact = artifacts[i];
-                    if (i > inputs.expireAfter || (inputs.expireBy && utils_1.shouldBePurged(artifact, inputs.artifactNames, inputs.expireBy))) {
+                    if (i < inputs.expireAfter || (inputs.expireBy && utils_1.shouldBePurged(artifact, inputs.artifactNames, inputs.expireBy))) {
                         continue;
                     }
                     deletedArtifacts.push(artifact);
