@@ -8499,7 +8499,7 @@ function run() {
                         continue;
                     }
                     deletedArtifacts.push(artifact);
-                    core.debug(`Deleting artifact:\n${JSON.stringify(artifact, null, 2)}`);
+                    core.info(`Deleting artifact:\n${JSON.stringify(artifact, null, 2)}`);
                     yield github_api_1.GithubApi.deleteArtifactById(artifact.id, github.context.repo.owner, github.context.repo.repo);
                 }
             }

@@ -29,7 +29,7 @@ async function run(): Promise<void> {
         }
 
         deletedArtifacts.push(artifact);
-        core.debug(`Deleting artifact:\n${JSON.stringify(artifact, null, 2)}`)
+        core.info(`Deleting artifact:\n${JSON.stringify(artifact, null, 2)}`)
         await GithubApi.deleteArtifactById(
           artifact.id,
           github.context.repo.owner,
