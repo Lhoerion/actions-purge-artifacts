@@ -8495,7 +8495,7 @@ function run() {
                 }
                 for (let i = 0; i < artifacts.length; ++i) {
                     const artifact = artifacts[i];
-                    if (i > inputs.expireAfter || (inputs.expireBy && utils_1.shouldBePurged(artifact, inputs.expireBy))) {
+                    if (i > inputs.expireAfter || (inputs.expireBy && utils_1.shouldBePurged(artifact, inputs.artifactNames, inputs.expireBy))) {
                         continue;
                     }
                     deletedArtifacts.push(artifact);
@@ -8547,8 +8547,9 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.groupByArtifactName = exports.getInputs = exports.shouldBePurged = void 0;
 const parse_duration_1 = __importDefault(__nccwpck_require__(3805));
 const core = __importStar(__nccwpck_require__(2186));
-function shouldBePurged(artifact, expireBy) {
-    return (Date.now() - new Date(artifact.created_at).getMilliseconds()) >= expireBy.getMilliseconds();
+function shouldBePurged(artifact, artifactNames, expireBy) {
+    return artifactNames.includes(artifact.name) &&
+        (Date.now() - new Date(artifact.created_at).getMilliseconds()) >= expireBy.getMilliseconds();
 }
 exports.shouldBePurged = shouldBePurged;
 function getInputs() {

@@ -8,9 +8,11 @@ export interface ArtifactGroups {
 
 export function shouldBePurged(
   artifact: components["schemas"]["artifact"],
+  artifactNames: string[],
   expireBy: Date,
 ): boolean {
-  return (Date.now() - new Date(artifact.created_at!).getMilliseconds()) >= expireBy.getMilliseconds();
+  return artifactNames.includes(artifact.name) &&
+    (Date.now() - new Date(artifact.created_at!).getMilliseconds()) >= expireBy.getMilliseconds();
 }
 
 export function getInputs() {
