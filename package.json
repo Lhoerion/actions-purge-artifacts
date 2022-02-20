@@ -19,7 +19,8 @@
   "homepage": "https://github.com/Lhoerion/actions-purge-artifacts#readme",
   "dependencies": {
     "@actions/core": "^1.2.6",
-    "@actions/github": "^5.0.0"
+    "@actions/github": "^5.0.0",
+    "parse-duration": "^1.0.2"
   },
   "devDependencies": {
     "@types/node": "^12.12.6",

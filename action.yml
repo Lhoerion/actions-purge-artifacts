@@ -1,10 +1,19 @@
 name: 'Purge artifacts'
 description: 'Purge artifacts that were previously uploaded in the workflow'
 author: 'GitHub'
-inputs: 
-  name:
-    description: 'Artifact name'
+inputs:
+  github_token:
+    required: true
+    description: 'GitHub auth token'
+  expire_strategy:
+    required: true
+    description: 'Strategy on how to determine artifacts for deletion'
+  artifact_name:
     required: false
+    description: 'Artifact name'
+outputs:
+  deleted_artifacts:
+    description: 'Serialized deleted artifacts'
 runs:
   using: 'node16'
   main: 'dist/index.js'
