@@ -25,10 +25,7 @@ export function shouldBePurged(
 export function getInputs(): Inputs {
   const githubToken = core.getInput('github_token', {required: true});
   const expireStrategy = core.getInput('expire_strategy', {required: true});
-  const artifactNames = core.getInput('artifact_name', {required: false})
-    .split(/\r?\n/)
-    .filter(name => name)
-    .map(name => name.trim());
+  const artifactNames = core.getMultilineInput('artifact_name', {required: false});
   let expireBy: Date | null = null;
   let expireAfter: number = 0;
   if (Number.isNaN(expireStrategy)) {
