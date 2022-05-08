@@ -6,16 +6,23 @@ export interface ArtifactGroups {
   [name: string]: components["schemas"]["artifact"][];
 }
 
+export interface Inputs {
+  githubToken: string;
+  expireBy: Date | null;
+  expireAfter: number;
+  artifactNames: string[];
+}
+
 export function shouldBePurged(
   artifact: components["schemas"]["artifact"],
   artifactNames: string[],
   expireBy: Date,
 ): boolean {
-  return artifactNames.includes(artifact.name) &&
+  return (!artifactNames.length || artifactNames.includes(artifact.name)) &&
     (Date.now() - new Date(artifact.created_at!).getMilliseconds()) >= expireBy.getMilliseconds();
 }
 
-export function getInputs() {
+export function getInputs(): Inputs {
   const githubToken = core.getInput('github_token', {required: true});
   const expireStrategy = core.getInput('expire_strategy', {required: true});
   const artifactNames = core.getInput('artifact_name', {required: false})
